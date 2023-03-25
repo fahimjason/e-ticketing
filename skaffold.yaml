@@ -5,10 +5,12 @@ deploy:
     manifests:
       - ./infra/k8s/*
 build:
-  local:
-    push: false
+  # local:
+  #   push: false
+  googleCloudBuild: 
+    projectId: projectId
   artifacts:
-    - image: fahimjason/auth
+    - image: us.gcr.io/projectId/auth
       context: auth
       docker:
         dockerfile: Dockerfile

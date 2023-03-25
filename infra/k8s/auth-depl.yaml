@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: auth
-          image: fahimjason/auth
+          image: us.gcr.io/projectId/auth
 ---
 # ClusterIP
 apiVersion: v1
