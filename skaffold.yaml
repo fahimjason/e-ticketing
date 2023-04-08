@@ -17,7 +17,7 @@ build:
           - src: "src/**/*.ts"
             dest: .
     - image: fahimjason/client
-      context: auth
+      context: client
       docker:
         dockerfile: Dockerfile
       sync:
