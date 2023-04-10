@@ -5,7 +5,7 @@ import useRequest from '../../hooks/use-request';
 const Signup = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    const { dbRequest, errors } = useRequest({
+    const { doRequest, errors } = useRequest({
         url: '/api/users/signin',
         method: 'post',
         body: {
@@ -17,7 +17,7 @@ const Signup = () => {
     const onSubmit = async event => {
         event.preventDefault();
 
-        dbRequest();
+        doRequest();
     };
 
     return (

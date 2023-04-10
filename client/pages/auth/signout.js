@@ -3,7 +3,7 @@ import Router from 'next/router';
 import useRequest from '../../hooks/use-request';
 
 const Signout = () => {
-    const { dbRequest } = useRequest({
+    const { doRequest } = useRequest({
         url: '/api/users/signout',
         method: 'post',
         body: {},
@@ -11,7 +11,7 @@ const Signout = () => {
     });
 
     useEffect(() => {
-        dbRequest();
+        doRequest();
     }, []);
 
     return 'Signing you out...';

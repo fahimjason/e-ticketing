@@ -4,7 +4,7 @@ import axios from 'axios';
 const useRequest = ({ url, method, body, onSuccess }) => {
     const [errors, setErrors] = useState(null);
 
-    const dbRequest = async () => {
+    const doRequest = async () => {
         try {
             setErrors(null);
             const response = await axios[method](url, body);
@@ -28,7 +28,7 @@ const useRequest = ({ url, method, body, onSuccess }) => {
         }
     };
 
-    return { dbRequest, errors };
+    return { doRequest, errors };
 };
 
 export default useRequest;
