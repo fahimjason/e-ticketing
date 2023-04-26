@@ -19,6 +19,7 @@ beforeAll(async () => {
 
 beforeEach(async () => {
     process.env.JWT_KEY = 'asdf';
+    jest.clearAllMocks();
 
     const collections = await mongoose.connection.db.collections();
 
