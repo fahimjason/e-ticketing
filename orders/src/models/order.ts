@@ -49,7 +49,7 @@ const orderSchema = new mongoose.Schema({
     }
 });
 
-orderSchema.statics.bind = (attrs: OrderAttrs) => {
+orderSchema.statics.build = (attrs: OrderAttrs) => {
     return new Order(attrs);
 };
 
