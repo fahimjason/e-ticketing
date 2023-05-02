@@ -12,6 +12,7 @@ A fully-functional online ticket selling micro-services architected system. Buil
 - [Node.js v18.16.0](https://nodejs.org/en/)
 - [Docker](https://docs.docker.com/engine/install/)
 - [Kubernetes](https://kubernetes.io/docs/setup/)
+- [Ingress-nginx](https://kubernetes.github.io/ingress-nginx/deploy/)
 - [Skaffold](https://skaffold.dev/docs/install/)
 - [Visual Studio Code](https://code.visualstudio.com/)
 
