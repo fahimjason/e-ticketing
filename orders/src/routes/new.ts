@@ -4,7 +4,7 @@ import { requireAuth, validateRequest, NotFoundError, OrderStatus, BadRequestErr
 import { body } from 'express-validator';
 import { Ticket } from '../models/ticket';
 import { Order } from '../models/order';
-import { OrderCreatedPublisher } from '../events/order-created-publisher';
+import { OrderCreatedPublisher } from '../events/publishers/order-created-publisher';
 import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
@@ -55,6 +55,7 @@ router.post(
         // Publish an event saying that an order is created
         new OrderCreatedPublisher(natsWrapper.client).publish({
             id: order.id,
+            version: order.version,
             status: order.status,
             userId: order.userId,
             expireAt: order.expiresAt.toISOString(),
