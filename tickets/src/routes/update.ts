@@ -1,6 +1,6 @@
 import express, { Request, Response } from 'express';
 import { body } from 'express-validator';
-import { validateRequest, requireAuth, NotFoundError, NotAuthorizedError } from '@e-ticketing/common';
+import { validateRequest, requireAuth, NotFoundError, NotAuthorizedError, BadRequestError } from '@e-ticketing/common';
 import { Ticket } from '../models/ticket';
 import { TicketUpdatedPublisher } from '../events/publishers/ticket-updated-publisher';
 import { natsWrapper } from '../nats-wrapper';
@@ -20,6 +20,10 @@ router.put(
 
         if (!ticket) {
             throw new NotFoundError();
+        }
+
+        if (ticket.orderId) {
+            throw new BadRequestError('Cannot edit a reserve ticket');
         }
 
         if (ticket.userId !== req.currentUser!.id) {
