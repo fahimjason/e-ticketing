@@ -3,6 +3,7 @@ import request from 'supertest';
 import { OrderStatus } from '@e-ticketing/common';
 import { app } from '../../app';
 import { Order } from '../../models/order';
+import { Payment } from '../../models/payment';
 import { stripe } from '../../stripe';
 
 // jest.mock('../../stripe.ts');
@@ -89,6 +90,13 @@ it('returns a 201 with valid inputs', async () => {
 
     expect(stripeCharge).toBeDefined();
     expect(stripeCharge!.currency).toEqual('usd');
+
+    const payment = await Payment.findOne({
+        orderId: order.id,
+        stripeId: stripeCharge!.id
+    });
+
+    expect(payment).not.toBeNull();
 
     // const chargeOption = (stripe.charges.create as jest.Mock).mock.calls[0][0];
     // expect(chargeOption.source).toEqual('tok_visa');
