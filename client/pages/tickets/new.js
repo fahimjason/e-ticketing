@@ -30,7 +30,7 @@ const NewTicket = () => {
 
     return (
         <div>
-            <h2>Create a Ticket</h2>
+            <h1>Create a Ticket</h1>
             <form onSubmit={onSubmit}>
                 <div className="form-group my-2">
                     <label>Title</label>
