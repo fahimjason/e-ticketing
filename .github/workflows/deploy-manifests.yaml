@@ -1,13 +1,13 @@
 name: deploy-manifests
 
-on: 
+on:
   push:
     branches:
       - main
     paths:
-      - 'infra/**'
+      - "infra/**"
 
-jobs: 
+jobs:
   build:
     runs-on: ubuntu-latest
     steps:
@@ -16,4 +16,4 @@ jobs:
         with:
           token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
       - run: doctl kubernetes cluster kubeconfig save e-ticketing
-      - run: kubectl apply -f infra/k8s 
+      - run: kubectl apply -f infra/k8s
