@@ -18,3 +18,8 @@ jobs:
           DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
           DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN}}
       - run: docker push fahimjason/auth
+      - uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{secrets.DIGITALOCEAN_ACCESS_TOKEN}}
+      - run: doctl kubernetes cluster kubeconfig save e-ticketing
+      - run: kubectl rollout restart deployment auth-depl
